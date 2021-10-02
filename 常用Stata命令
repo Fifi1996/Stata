@@ -1,0 +1,36 @@
+describe *显示表信息
+su x *变量数据信息、最大最小平均值等
+return list *返回更多计算结果
+scalar a=2 *定义变量
+display 2+2 *计算器
+rename
+ 
+regress y x1 x2 x3 *多元回归 y被解释变量，x解释变量
+regress y x1，noc *noconstant 无常数项回归
+reg lntc lnq,robust *稳健标准误
+quietly regress y x1 *执行回归命令，结果窗口不显示运行结果
+di 1/_b[lnq] *计算系数倒数
+vce *显示回归系数的协方差矩阵
+predict *计算被解释变量拟合值，默认
+predict e,r *residual计算残差
+test s=0.1 *检验原假设，用变量名s表示前面系数，并非真实值
+estat ovtest,rhs 
+*ovtest omitted variable test 遗漏解释变量
+*rhs 使用解释变量的幂为非线性项
+estat vif *方差膨胀因子（Variance Inflation Factor）最大不能超过10
+estat imtest,white *异方差怀特检验
+estat bgodfrey *自相关BG检验
+
+rvfplot *residual-versus-fitted plot *残差图
+rvpplot *arname #residual-versus-predictor plot
+ 
+kdensity wage *核密度图
+ . twoway kdensity wage,xaxis(1) yaxis(1) xvarlab(wage) || kdensity lnw,xaxis(2) yaxis(2) xvarlab(l
+> n(wage)) lpattern(dash)
+#twoway 两张图
+* xaxis(1) xaxis(2) 坐标轴两个不同值
+* xvarlab(wage) 坐标轴标签
+* lpattern(dash) 虚线
+
+
+
